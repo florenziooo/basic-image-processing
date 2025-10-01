@@ -1,5 +1,6 @@
 using BasicImageProcessing.ImageProcessingServices;
 using BasicImageProcessing.ImageProcessingServices.Exceptions;
+using BasicImageProcessing.ImageProcessingServices.Extensions;
 using BasicImageProcessing.ImageProcessingServices.Interfaces;
 
 namespace BasicImageProcessing
@@ -13,6 +14,7 @@ namespace BasicImageProcessing
         {
             InitializeComponent();
         }
+
 
         private void addImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -218,6 +220,71 @@ namespace BasicImageProcessing
         {
             CameraCaptureForm cameraCaptureForm = new CameraCaptureForm(this, ref pictureBoxOriginalImage);
             cameraCaptureForm.ShowDialog();
+        }
+
+        private void groupBoxBasicImageProcessing_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private void buttonSharpen_Click(object sender, EventArgs e)
+        {
+            if (pictureBoxOriginalImage.Image == null) return;
+            pictureBoxProcessedImage.Image = ((Bitmap)pictureBoxOriginalImage.Image).Sharpen();
+        }
+
+
+        private void buttonEmbossLaplacian_Click(object sender, EventArgs e)
+        {
+            if (pictureBoxOriginalImage.Image == null) return;
+            pictureBoxProcessedImage.Image = ((Bitmap)pictureBoxOriginalImage.Image).EmbossLaplacian();
+        }
+
+        private void buttonEmbossLaplacianHV_Click(object sender, EventArgs e)
+        {
+            if (pictureBoxOriginalImage.Image == null) return;
+            pictureBoxProcessedImage.Image = ((Bitmap)pictureBoxOriginalImage.Image).EmbossLaplacianHorizontalVertical();
+        }
+
+        private void buttonEmbossLaplacianAllDir_Click(object sender, EventArgs e)
+        {
+            if (pictureBoxOriginalImage.Image == null) return;
+            pictureBoxProcessedImage.Image = ((Bitmap)pictureBoxOriginalImage.Image).EmbossLaplacianAllDirections();
+        }
+
+        private void buttonEmbossLaplacianLossy_Click(object sender, EventArgs e)
+        {
+            if (pictureBoxOriginalImage.Image == null) return;
+            pictureBoxProcessedImage.Image = ((Bitmap)pictureBoxOriginalImage.Image).EmbossLaplacianLossy();
+        }
+
+        private void buttonEmbossLaplacianHor_Click(object sender, EventArgs e)
+        {
+            if (pictureBoxOriginalImage.Image == null) return;
+            pictureBoxProcessedImage.Image = ((Bitmap)pictureBoxOriginalImage.Image).EmbossLaplacianHorizontalOnly();
+        }
+
+        private void buttonEmbossLaplacianVer_Click(object sender, EventArgs e)
+        {
+            if (pictureBoxOriginalImage.Image == null) return;
+            pictureBoxProcessedImage.Image = ((Bitmap)pictureBoxOriginalImage.Image).EmbossLaplacianVerticalOnly();
+        }
+
+        private void buttonSmooth_Click(object sender, EventArgs e)
+        {
+            if (pictureBoxOriginalImage.Image == null) return;
+            pictureBoxProcessedImage.Image = ((Bitmap)pictureBoxOriginalImage.Image).Smooth();
+        }
+
+        private void buttonGaussianBlur_Click(object sender, EventArgs e)
+        {
+            if (pictureBoxOriginalImage.Image == null) return;
+            pictureBoxProcessedImage.Image = ((Bitmap)pictureBoxOriginalImage.Image).GaussianBlur();
+        }
+
+        private void buttonMeanRemoval_Click(object sender, EventArgs e)
+        {
+            if (pictureBoxOriginalImage.Image == null) return;
+            pictureBoxProcessedImage.Image = ((Bitmap)pictureBoxOriginalImage.Image).MeanRemoval();
         }
     }
 }
